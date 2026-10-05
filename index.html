@@ -107,7 +107,13 @@ section{padding:clamp(4rem,10vw,8rem) 0;position:relative}
 .trail{fill:none;stroke:var(--red);stroke-width:5;stroke-linecap:round}
 .wp circle{fill:var(--paper);stroke:var(--faded);stroke-width:3;transition:fill .4s,stroke .4s}
 .wp .flag{fill:var(--red);stroke:var(--ink);stroke-width:2.5;opacity:0;transform:translateY(8px);transition:opacity .4s,transform .4s}
-.wp text{font-family:var(--sc);font-size:34px;fill:var(--faded);transition:fill .4s}
+.wp text{font-family:var(--sc);font-size:34px;fill:var(--faded);paint-order:stroke fill;stroke:var(--bg);stroke-width:8px;stroke-linejoin:round;transition:fill .4s}
+.wp[data-layer="0"] text{transform:translate(-78px,0)}
+.wp[data-layer="1"] text{transform:translate(150px,0)}
+.wp[data-layer="2"] text{transform:translate(-72px,0)}
+.wp[data-layer="3"] text{transform:translate(132px,0)}
+.wp[data-layer="4"] text{transform:translate(-64px,0)}
+.wp[data-layer="5"] text{transform:translate(54px,0)}
 .wp.reached circle{fill:var(--ink);stroke:var(--ink)}
 .wp.reached text{fill:var(--ink)}
 .wp.here circle{fill:var(--red);stroke:var(--ink)}
@@ -181,6 +187,13 @@ footer p{margin:0 auto .3rem;max-width:80ch}
   .stats{grid-template-columns:1fr}
   .map{position:sticky;top:0;height:auto;z-index:2;background:var(--paper);padding:.5rem 0;border-bottom:3px double var(--faded)}
   .mountain{max-height:34vh}
+  .wp text{font-size:26px;stroke-width:6px}
+  .wp[data-layer="0"] text{transform:translate(-16px,0)}
+  .wp[data-layer="1"] text{transform:translate(44px,0)}
+  .wp[data-layer="2"] text{transform:translate(-32px,0)}
+  .wp[data-layer="3"] text{transform:translate(50px,0)}
+  .wp[data-layer="4"] text{transform:translate(-28px,0)}
+  .wp[data-layer="5"] text{transform:translate(20px,0)}
   .step{min-height:auto;padding:2.5rem 0}
   .leaders-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
   .resource-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
@@ -472,7 +485,7 @@ footer{scroll-snap-align:end}
   </div>
 </section>
 
-<section class="journey" aria-labelledby="journey-h">
+<section class="journey" id="journey" aria-labelledby="journey-h">
   <div class="wrap">
     <div class="map" aria-hidden="false"><svg class="mountain" viewBox="-200 0 1200 730" role="img" aria-label="A mountain with a trail climbing past six waypoints: strengths and motivations, growth mindset, team values, mission, plan, and success"><path d="M -10 700 L 90 560 L 140 600 L 230 700 Z" class="hill"/><path d="M 590 700 L 700 540 L 740 580 L 810 700 Z" class="hill"/><polygon points="20,700 150,470 190,500 300,250 340,280 400,20 470,200 520,170 600,420 640,390 780,700" class="peak"/><path d="M 414 56 L 380 86" class="hatch"/><path d="M 432 101 L 398 131" class="hatch"/><path d="M 449 146 L 415 176" class="hatch"/><path d="M 480 194 L 446 224" class="hatch"/><path d="M 492 186 L 458 216" class="hatch"/><path d="M 505 179 L 471 209" class="hatch"/><path d="M 536 220 L 502 250" class="hatch"/><path d="M 556 282 L 522 312" class="hatch"/><path d="M 576 345 L 542 375" class="hatch"/><path d="M 608 414 L 574 444" class="hatch"/><path d="M 618 406 L 584 436" class="hatch"/><path d="M 628 399 L 594 429" class="hatch"/><path d="M 668 452 L 634 482" class="hatch"/><path d="M 703 530 L 669 560" class="hatch"/><path d="M 738 607 L 704 637" class="hatch"/><path d="M 362 110 L 380 92 L 398 118 L 418 88 L 440 112" class="ln"/><path d="M 60 700 L 60 712" class="ln"/><path d="M 44 702 L 60 666 L 76 702 Z" class="tree"/><path d="M 120 700 L 120 712" class="ln"/><path d="M 104 702 L 120 666 L 136 702 Z" class="tree"/><path d="M 690 700 L 690 712" class="ln"/><path d="M 674 702 L 690 666 L 706 702 Z" class="tree"/><path d="M 750 700 L 750 712" class="ln"/><path d="M 734 702 L 750 666 L 766 702 Z" class="tree"/><path d="M 250 700 L 250 712" class="ln"/><path d="M 234 702 L 250 666 L 266 702 Z" class="tree"/><path d="M 560 700 L 560 712" class="ln"/><path d="M 544 702 L 560 666 L 576 702 Z" class="tree"/><path d="M 200 640 Q 442 630 565 560 Q 365 535 285 450 Q 445 422 485 335 Q 355 310 345 225 Q 432 174 400 62" class="trail-ghost"/><path id="trail" d="M 200 640 Q 442 630 565 560 Q 365 535 285 450 Q 445 422 485 335 Q 355 310 345 225 Q 432 174 400 62" class="trail"/><g class="wp" data-layer="0"><path class="flag" d="M 200 640 L 200 588 M 200 588 L 236 599 L 200 610 Z"/><circle cx="200" cy="640" r="11"/><text x="174" y="650" text-anchor="end">Strengths &amp; motivations</text></g><g class="wp" data-layer="1"><path class="flag" d="M 565 560 L 565 508 M 565 508 L 601 519 L 565 530 Z"/><circle cx="565" cy="560" r="11"/><text x="591" y="570" text-anchor="start">Growth mindset</text></g><g class="wp" data-layer="2"><path class="flag" d="M 285 450 L 285 398 M 285 398 L 321 409 L 285 420 Z"/><circle cx="285" cy="450" r="11"/><text x="259" y="460" text-anchor="end">Team values</text></g><g class="wp" data-layer="3"><path class="flag" d="M 485 335 L 485 283 M 485 283 L 521 294 L 485 305 Z"/><circle cx="485" cy="335" r="11"/><text x="511" y="345" text-anchor="start">Mission</text></g><g class="wp" data-layer="4"><path class="flag" d="M 345 225 L 345 173 M 345 173 L 381 184 L 345 195 Z"/><circle cx="345" cy="225" r="11"/><text x="319" y="235" text-anchor="end">Plan</text></g><g class="wp" data-layer="5"><path class="flag" d="M 400 62 L 400 10 M 400 10 L 436 21 L 400 32 Z"/><circle cx="400" cy="62" r="11"/><text x="426" y="72" text-anchor="start">Success</text></g><circle id="walker-ring" class="walker-ring" r="12" cx="200" cy="640"/><circle id="walker" class="walker" r="11" cx="200" cy="640"/></svg></div>
     <div class="steps">
