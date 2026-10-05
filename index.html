@@ -139,6 +139,18 @@ section{padding:clamp(4rem,10vw,8rem) 0;position:relative}
 .reveal .scroll{animation:unroll .5s ease-out}
 @keyframes unroll{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}
 
+/* ---------- resources ---------- */
+.resources .intro{font-family:var(--fell);font-style:italic;color:var(--faded);font-size:1.05em;margin-bottom:1.4rem}
+.resource-grid{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}
+.resource-card{position:relative;display:grid;grid-template-rows:120px 1fr;min-height:250px;color:inherit;text-decoration:none;background:var(--paper-hi);border:3px double var(--faded);border-radius:8px;overflow:hidden;transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease}
+.resource-card:hover{transform:translateY(-5px) rotate(-.3deg);border-color:var(--red);box-shadow:4px 5px 0 rgba(59,42,26,.14)}
+.resource-card img{width:100%;height:120px;object-fit:contain;background:rgba(255,255,255,.42);padding:.8rem}
+.resource-card .mark{display:none;place-items:center;height:120px;background:var(--paper);font-family:var(--sc);font-size:2.4rem;color:var(--red)}
+.resource-card .copy{padding:1rem 1.05rem 1.1rem}
+.resource-card b{display:block;font-family:var(--sc);font-weight:400;font-size:1.3em;line-height:1.1;margin-bottom:.25rem}
+.resource-card span{display:block;font-family:var(--fell);font-style:italic;color:var(--red);font-size:.9em;margin-bottom:.45rem}
+.resource-card p{font-size:.92em;line-height:1.35;margin:0;max-width:none}
+
 /* ---------- dragons ---------- */
 .dragons .head{display:flex;gap:1.5rem;align-items:center;justify-content:space-between}
 .dragons .dragon{width:clamp(90px,12vw,140px);margin:0}
@@ -166,9 +178,10 @@ footer p{margin:0 auto .3rem;max-width:80ch}
   .mountain{max-height:34vh}
   .step{min-height:auto;padding:2.5rem 0}
   .leaders-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .resource-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
   .fears{grid-template-columns:1fr}
 }
-@media (max-width: 520px){ .leaders-grid{grid-template-columns:1fr} }
+@media (max-width: 520px){ .leaders-grid,.resource-grid{grid-template-columns:1fr} }
 @media (prefers-reduced-motion: reduce){
   *{animation:none !important;transition:none !important;scroll-behavior:auto !important}
   .dragon .draw{stroke-dashoffset:0}.dragon .spike,.dragon .eye,.hero .fadein{opacity:1}
@@ -601,6 +614,81 @@ footer{scroll-snap-align:end}
       <li><span class="rn seal" data-anim="stamp">II</span><div><h3>What do we care about?</h3><p>Write down your team's values and use them to make decisions.</p></div></li>
       <li><span class="rn seal" data-anim="stamp">III</span><div><h3>Where are we going?</h3><p>Agree on the mission. Separate requirements from solutions.</p></div></li>
     </ol>
+  </div>
+</section>
+
+<section class="resources slide" data-slide="Refs & recommendations" aria-labelledby="resources-h">
+  <div class="wrap">
+    <p class="kick">~ Further quests ~</p>
+    <h2 id="resources-h">References & recommendations</h2>
+    <p class="intro">A few places to keep digging after the workshop.</p>
+    <ul class="resource-grid" data-anim-children="pin">
+      <li>
+        <a class="resource-card" href="https://brenebrown.com/resources/" target="_blank" rel="noopener">
+          <img src="https://www.google.com/s2/favicons?domain=brenebrown.com&sz=128" alt="" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">
+          <span class="mark" aria-hidden="true">BB</span>
+          <div class="copy">
+            <b>Brene Brown resources</b>
+            <span>Courage, trust, vulnerability</span>
+            <p>Useful language for braver conversations and more human leadership.</p>
+          </div>
+        </a>
+      </li>
+      <li>
+        <a class="resource-card" href="https://www.gallup.com/home.aspx" target="_blank" rel="noopener">
+          <img src="https://www.google.com/s2/favicons?domain=gallup.com&sz=128" alt="" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">
+          <span class="mark" aria-hidden="true">G</span>
+          <div class="copy">
+            <b>Gallup</b>
+            <span>Engagement and strengths research</span>
+            <p>Data-backed framing for what healthy, engaged teams need from managers.</p>
+          </div>
+        </a>
+      </li>
+      <li>
+        <a class="resource-card" href="https://books.google.com/books/about/Einstein_s_Boss.html?id=Xw5UDwAAQBAJ&printsec=frontcover&source=kp_read_button&hl=en&newbks=1&newbks_redir=0&gboemv=1#v=onepage&q&f=false" target="_blank" rel="noopener">
+          <img src="https://books.google.com/books/content?id=Xw5UDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api" alt="" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">
+          <span class="mark" aria-hidden="true">EB</span>
+          <div class="copy">
+            <b>Einstein's Boss</b>
+            <span>Robert Hromas & Christopher Hromas</span>
+            <p>Lessons on leading brilliant, stubborn, independent people without smothering them.</p>
+          </div>
+        </a>
+      </li>
+      <li>
+        <a class="resource-card" href="https://wizardzines.com/zines/manager/" target="_blank" rel="noopener">
+          <img src="https://wizardzines.com/zines/manager/cover.jpg" alt="" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">
+          <span class="mark" aria-hidden="true">M</span>
+          <div class="copy">
+            <b>Help! I Have a Manager!</b>
+            <span>Julia Evans</span>
+            <p>A practical zine for understanding what good managers actually do.</p>
+          </div>
+        </a>
+      </li>
+      <li>
+        <a class="resource-card" href="https://books.google.com/books/about/Multipliers_Revised_and_Updated.html?id=dN_hDAAAQBAJ" target="_blank" rel="noopener">
+          <img src="https://books.google.com/books/content?id=dN_hDAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api" alt="" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">
+          <span class="mark" aria-hidden="true">M</span>
+          <div class="copy">
+            <b>Multipliers</b>
+            <span>Liz Wiseman</span>
+            <p>How leaders make everyone around them smarter instead of draining the room.</p>
+          </div>
+        </a>
+      </li>
+      <li>
+        <a class="resource-card" href="https://rework.withgoogle.com/" target="_blank" rel="noopener">
+          <span class="mark" style="display:grid" aria-hidden="true">+</span>
+          <div class="copy">
+            <b>And more</b>
+            <span>Keep building the shelf</span>
+            <p>Psychological safety, High Output Management, Team Topologies, and your own field notes.</p>
+          </div>
+        </a>
+      </li>
+    </ul>
   </div>
 </section>
 
