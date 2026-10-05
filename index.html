@@ -58,19 +58,20 @@ section{padding:clamp(4rem,10vw,8rem) 0;position:relative}
 .tree{fill:var(--tree);stroke:var(--ink);stroke-width:2}
 
 /* ---------- hero ---------- */
-.hero{min-height:100svh;display:grid;place-items:center;text-align:center;padding:5rem 1.25rem 12rem;overflow:hidden}
+.hero{min-height:100svh;display:grid;place-items:center;text-align:center;padding:clamp(3.5rem,6vh,5rem) 1.25rem clamp(8rem,18vh,13rem);overflow:hidden}
 .hero::before{content:"";position:absolute;inset:clamp(10px,2.5vw,28px);border:6px double var(--faded);border-radius:6px;pointer-events:none}
 .hero .compass{position:absolute;top:clamp(28px,5vw,64px);right:clamp(28px,5vw,72px);width:clamp(84px,12vw,170px);animation:spin 90s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
 @keyframes draw{to{stroke-dashoffset:0}}
 @keyframes pop{from{opacity:0;transform:scale(.2)}to{opacity:1;transform:scale(1)}}
 .hero .pre{font-family:var(--fell);font-style:italic;color:var(--faded);font-size:clamp(1.6rem,1.2rem + 2vw,2.8rem);margin:0 auto;max-width:none}
-.hero h1{font-family:var(--display);font-weight:400;font-size:clamp(3.2rem,1.5rem + 8vw,8.5rem);line-height:1;margin:.1em 0 .35em;letter-spacing:.01em}
+.hero h1{font-family:var(--display);font-weight:400;font-size:clamp(3rem,1.45rem + 6vw,7.1rem);line-height:.95;margin:.05em auto .25em;letter-spacing:.01em;max-width:13ch;text-wrap:balance}
 .hero .by{font-family:var(--fell);font-style:italic;font-size:1.2em;margin:0 auto;max-width:none}
 .hero .fadein{opacity:0;animation:rise 1s ease-out forwards}
 .hero .pre.fadein{animation-delay:2.1s}.hero h1.fadein{animation-delay:2.3s}.hero .by.fadein{animation-delay:2.7s}
 @keyframes rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
 .range{position:absolute;left:0;right:0;bottom:0;width:100%;height:clamp(110px,16vw,200px)}
+.hero > div{position:relative;z-index:1;transform:translateY(clamp(-5.5rem,-8vh,-3rem))}
 
 /* ---------- about ---------- */
 .about .wrap{display:grid;grid-template-columns:minmax(0,420px) 1fr;gap:clamp(2rem,5vw,4rem);align-items:center}
@@ -263,7 +264,7 @@ footer p{margin:0 auto .3rem;max-width:80ch}
 @media (prefers-reduced-motion: reduce){.leader,.leader:hover{transform:rotate(var(--r,0deg))}}
 
 /* ===== dragon (illustration) ===== */
-.dragon{position:relative;display:block;width:clamp(300px,62vw,780px);margin:0 auto .2rem;aspect-ratio:1235/607}
+.dragon{position:relative;display:block;width:clamp(280px,54vw,680px);margin:0 auto .2rem;aspect-ratio:1235/607}
 .dragon img{display:block;width:100%;height:auto;transform-origin:70% 60%;filter:drop-shadow(0 14px 10px rgba(59,42,26,.12))}
 .dragon .puff{position:absolute;left:98.6%;top:55%;width:0;height:0}
 .dragon .puff i{position:absolute;left:0;top:0;width:12px;height:12px;margin:-6px;border:2px solid var(--faded);border-radius:50%;opacity:0;animation:puff 5s ease-out infinite;animation-delay:calc(4s + var(--p) * .28s)}
