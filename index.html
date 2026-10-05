@@ -91,11 +91,13 @@ section{padding:clamp(4rem,10vw,8rem) 0;position:relative}
 
 /* ---------- thesis ---------- */
 .thesis{text-align:center}
+.thesis .wrap{display:grid;justify-items:center;text-align:center}
 .thesis .disney{font-family:var(--fell);font-style:italic;letter-spacing:-.005em;font-size:clamp(2.6rem,1.5rem + 5vw,6rem);line-height:1.05;margin:0 auto .2em;max-width:none}
 .thesis .jk{font-family:var(--sc);color:var(--red);font-size:clamp(2.6rem,1.5rem + 4vw,5rem);display:inline-block;transform:rotate(-7deg);margin:0 0 3rem}
 .thesis .pills{display:flex;flex-wrap:wrap;gap:.6rem;justify-content:center;list-style:none;padding:0;margin:1rem 0 3rem}
 .thesis .pills li{font-family:var(--fell);font-style:italic;border:3px double var(--faded);border-radius:999px;padding:.25rem 1.1rem;background:var(--paper-hi)}
-.thesis .claim{font-family:var(--sc);font-size:clamp(2rem,1.4rem + 2.6vw,3.8rem);line-height:1.15;margin:0 auto;max-width:22ch}
+.thesis .claim{font-family:var(--sc);font-size:clamp(2rem,1.4rem + 2.6vw,3.8rem);line-height:1.15;margin:0 auto;max-width:34ch}
+.thesis .claim span{display:block}
 
 /* ---------- journey ---------- */
 .journey .wrap{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:clamp(1.5rem,4vw,4rem);align-items:start}
@@ -466,7 +468,7 @@ footer{scroll-snap-align:end}
     <h2 id="depends-h">It depends.</h2>
     <p class="aside-note" style="margin-inline:auto">Depends on your…</p>
     <ul class="pills" data-anim-children="flutter"><li>task</li><li>company</li><li>incentives</li><li>seniority</li><li>timelines</li><li>and more</li></ul>
-    <p class="claim">Your problem will change. How you build the team doesn't.</p>
+    <p class="claim"><span>Your problem will change.</span><span>How you build the team doesn't.</span></p>
   </div>
 </section>
 
