@@ -840,6 +840,35 @@ footer{scroll-snap-align:end}
   }, {rootMargin:'-48% 0px -48% 0px'});
   slides.forEach(function(s){ sio.observe(s); });
 
+  /* ---- clicker / keyboard slide advance ---- */
+  function activeSlideIndex(){
+    var current = dotBtns.findIndex(function(b){ return b.getAttribute('aria-current') === 'true'; });
+    if (current >= 0) return current;
+    var midpoint = window.innerHeight / 2;
+    return slides.reduce(function(best, s, i){
+      var distance = Math.abs(s.getBoundingClientRect().top - midpoint);
+      return distance < best.distance ? {index:i, distance:distance} : best;
+    }, {index:0, distance:Infinity}).index;
+  }
+
+  function moveSlide(delta){
+    var next = Math.min(slides.length - 1, Math.max(0, activeSlideIndex() + delta));
+    slides[next].scrollIntoView({behavior: reduce ? 'auto' : 'smooth', block:'start'});
+  }
+
+  window.addEventListener('keydown', function(e){
+    if (e.defaultPrevented || e.metaKey || e.ctrlKey || e.altKey) return;
+    var tag = e.target && e.target.tagName;
+    if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT' || tag === 'BUTTON' || e.target.isContentEditable) return;
+    if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') {
+      e.preventDefault();
+      moveSlide(1);
+    } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+      e.preventDefault();
+      moveSlide(-1);
+    }
+  });
+
   /* ---- pick a leader ---- */
   var reveal = document.querySelector('.reveal');
   var buttons = Array.prototype.slice.call(document.querySelectorAll('.leader'));
