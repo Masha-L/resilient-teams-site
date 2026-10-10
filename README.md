@@ -4,6 +4,10 @@ A single-page Women Who Code workshop site for Masha's "Building Resilient Teams
 
 Open `index.html` directly or serve the folder with a static server.
 
+## Handout
+
+The resource card links to `strengths-and-values-handout.pdf`. Keep that filename stable so the workshop download URL and analytics event remain consistent.
+
 ## Visit Tracking
 
 The page has an optional GA4 hook in `index.html`.

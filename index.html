@@ -681,12 +681,12 @@ footer{scroll-snap-align:end}
     <p class="intro">A few places to keep digging after the workshop.</p>
     <ul class="resource-grid" data-anim-children="pin">
       <li>
-        <a class="resource-card" href="resilient-teams-handout.docx" download="resilient-teams-handout.docx">
+        <a class="resource-card" href="strengths-and-values-handout.pdf" download="strengths-and-values-handout.pdf">
           <span class="mark" style="display:grid" aria-hidden="true">H</span>
           <div class="copy">
             <b>Workshop handout</b>
-            <span>Download as DOCX</span>
-            <p>A one-page worksheet for the leadership quiz, strengths, values, and team playbook.</p>
+            <span>Download as PDF</span>
+            <p>A worksheet for finding strengths, sharing them, and mapping the team's gaps.</p>
           </div>
         </a>
       </li>
@@ -927,7 +927,7 @@ footer{scroll-snap-align:end}
     var link = e.target.closest && e.target.closest('a[href]');
     if (!link) return;
     var href = link.getAttribute('href') || '';
-    if (link.hasAttribute('download') || /\.docx(?:$|\?)/.test(href)) {
+    if (link.hasAttribute('download') || /\.(?:docx|pdf)(?:$|\?)/.test(href)) {
       trackEvent('handout_downloaded', { link_url: link.href });
     } else if (/^https?:\/\//.test(href)) {
       trackEvent('external_link_clicked', { link_url: link.href, link_text: link.textContent.trim().slice(0, 80) });
