@@ -6,6 +6,27 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Building Resilient Teams · a Women Who Code workshop</title>
 <script>document.documentElement.classList.add("js")</script>
+<script>
+window.RESILIENT_TEAMS_ANALYTICS = {
+  ga4MeasurementId: ""
+};
+(function(){
+  var config = window.RESILIENT_TEAMS_ANALYTICS || {};
+  var id = (config.ga4MeasurementId || "").trim();
+  if (!/^G-[A-Z0-9]+$/.test(id)) return;
+
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ window.dataLayer.push(arguments); }
+  window.gtag = gtag;
+  gtag('js', new Date());
+  gtag('config', id, { send_page_view: true });
+
+  var script = document.createElement('script');
+  script.async = true;
+  script.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(id);
+  document.head.appendChild(script);
+})();
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&family=IM+Fell+English:ital@0;1&family=IM+Fell+English+SC&family=Uncial+Antiqua&display=swap">
@@ -760,6 +781,10 @@ footer{scroll-snap-align:end}
 <script>
 (function(){
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function trackEvent(name, params){
+    if (typeof window.gtag !== 'function') return;
+    window.gtag('event', name, params || {});
+  }
 
   /* ---- trail climbs as you scroll through the journey ---- */
   var trail = document.getElementById('trail');
@@ -837,7 +862,10 @@ footer{scroll-snap-align:end}
     var li = document.createElement('li'), b = document.createElement('button');
     b.type = 'button'; b.setAttribute('aria-label', 'Go to ' + s.dataset.slide);
     var tip = document.createElement('span'); tip.className = 'tip'; tip.textContent = s.dataset.slide; b.appendChild(tip);
-    b.addEventListener('click', function(){ s.scrollIntoView({behavior: reduce ? 'auto' : 'smooth', block:'start'}); });
+    b.addEventListener('click', function(){
+      trackEvent('slide_dot_clicked', { slide_name: s.dataset.slide, slide_index: i });
+      s.scrollIntoView({behavior: reduce ? 'auto' : 'smooth', block:'start'});
+    });
     li.appendChild(b); list.appendChild(li); return b;
   });
   var sio = new IntersectionObserver(function(entries){
@@ -863,6 +891,7 @@ footer{scroll-snap-align:end}
 
   function moveSlide(delta){
     var next = Math.min(slides.length - 1, Math.max(0, activeSlideIndex() + delta));
+    trackEvent('slide_advanced', { slide_name: slides[next].dataset.slide, slide_index: next, direction: delta > 0 ? 'next' : 'previous' });
     slides[next].scrollIntoView({behavior: reduce ? 'auto' : 'smooth', block:'start'});
   }
 
@@ -890,9 +919,20 @@ footer{scroll-snap-align:end}
     var d = document.createElement('p'); d.textContent = btn.dataset.desc;
     var n = document.createElement('p'); n.className = 'aside-note'; n.textContent = 'Now tell your neighbor why you picked them.';
     box.appendChild(h); box.appendChild(d); box.appendChild(n); reveal.appendChild(box);
+    trackEvent('leader_selected', { leader_name: btn.dataset.name, leader_style: btn.dataset.style });
     try { localStorage.setItem('rt-leader', btn.dataset.name); } catch(e){}
   }
   buttons.forEach(function(b){ b.addEventListener('click', function(){ pick(b); }); });
+  document.addEventListener('click', function(e){
+    var link = e.target.closest && e.target.closest('a[href]');
+    if (!link) return;
+    var href = link.getAttribute('href') || '';
+    if (link.hasAttribute('download') || /\.docx(?:$|\?)/.test(href)) {
+      trackEvent('handout_downloaded', { link_url: link.href });
+    } else if (/^https?:\/\//.test(href)) {
+      trackEvent('external_link_clicked', { link_url: link.href, link_text: link.textContent.trim().slice(0, 80) });
+    }
+  });
   try {
     var saved = localStorage.getItem('rt-leader');
     if (saved) buttons.forEach(function(b){ if (b.dataset.name === saved) pick(b); });
