@@ -245,6 +245,9 @@ footer p{margin:0 auto .3rem;max-width:80ch}
   .hero .by{font-size:clamp(1.05rem,5.2vw,1.2rem);line-height:1.2;max-width:min(20rem,calc(100vw - 3.2rem))}
   .hero .range{height:clamp(76px,22vw,104px)}
   .leaders-grid,.resource-grid{grid-template-columns:1fr}
+  .leaders.slide{padding-block:3.25rem 4.25rem}
+  .leaders .sec-head{gap:.75rem}
+  .leaders .pose-side{width:min(190px,56vw)}
   #research{scroll-margin-top:8rem}
   .research.slide{justify-content:flex-start}
   .research .wrap{padding-top:1rem}
@@ -464,6 +467,12 @@ footer{scroll-snap-align:end}
 @keyframes walkin{from{opacity:0;translate:-90px 0}}
 @keyframes divein{from{opacity:0;translate:-120px -90px;rotate:-14deg}}
 @media (max-width:700px){.sec-head{flex-direction:column;align-items:flex-start}.pose-side{width:200px}}
+@media (max-width:520px){
+  .leaders .wrap{width:min(100% - 2rem,26rem)}
+  .leaders-grid{gap:1.65rem;padding-top:.75rem}
+  .leaders-grid li .leader{--y:0rem;transform:rotate(var(--r,0deg));min-height:9.8rem}
+  .leader:hover,.leader[aria-pressed="true"]{transform:rotate(0deg) translateY(-4px) scale(1.02)}
+}
 </style>
 </head>
 <body>
